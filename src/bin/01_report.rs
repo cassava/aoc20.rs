@@ -53,10 +53,10 @@ In your expense report, what is the product of the three entries that sum to
 
 */
 
-use aoc19;
+use aoc20;
 
 fn main() {
-    let mut input = aoc19::ProgramInput::new(PUZZLE, INPUT);
+    let mut input = aoc20::ProgramInput::new(PUZZLE, INPUT);
     println!("Day 1: {}", PUZZLE);
 
     let report: Vec<i32> = input

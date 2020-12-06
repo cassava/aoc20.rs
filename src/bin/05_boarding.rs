@@ -70,13 +70,13 @@ Your seat wasn't at the very front or back, though; the seats with IDs +1 and
 -1 from yours will be in your list.
 */
 
-use aoc19;
+use aoc20;
 
 use std::str::FromStr;
 use thiserror::Error;
 
 fn main() {
-    let mut input = aoc19::ProgramInput::new(PUZZLE, INPUT);
+    let mut input = aoc20::ProgramInput::new(PUZZLE, INPUT);
     println!("Day 5: {}", PUZZLE);
 
     let seating: Vec<SeatingPos> = input.to_str().lines().map(|x| x.parse().unwrap()).collect();

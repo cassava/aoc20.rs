@@ -59,14 +59,14 @@ Given the same example list from above:
 How many passwords are valid according to the new interpretation of the policies?
 */
 
-use aoc19;
+use aoc20;
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::str::FromStr;
 use thiserror::Error;
 
 fn main() {
-    let mut input = aoc19::ProgramInput::new(PUZZLE, INPUT);
+    let mut input = aoc20::ProgramInput::new(PUZZLE, INPUT);
     println!("Day 2: {}", PUZZLE);
 
     let policies: Vec<(PasswordPolicy, String)> = input

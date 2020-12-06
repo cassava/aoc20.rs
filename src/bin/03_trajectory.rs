@@ -92,12 +92,12 @@ What do you get if you multiply together the number of trees encountered on
 each of the listed slopes?
 */
 
-use aoc19;
+use aoc20;
 use std::str::FromStr;
 use thiserror::Error;
 
 fn main() {
-    let mut input = aoc19::ProgramInput::new(PUZZLE, INPUT);
+    let mut input = aoc20::ProgramInput::new(PUZZLE, INPUT);
     println!("Day 3: {}", PUZZLE);
 
     let map: Map = input.to_str().parse().unwrap();
