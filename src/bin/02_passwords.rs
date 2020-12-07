@@ -85,22 +85,16 @@ fn main() {
         ":: Number of valid (sled rental) passwords is: {}",
         policies
             .iter()
-            .fold(0, |sum, (policy, pass)| if policy.is_valid(pass) {
-                sum + 1
-            } else {
-                sum
-            })
+            .filter(|(policy, pass)| policy.is_valid(pass))
+            .count()
     );
 
     println!(
         ":: Number of valid (Toboggan Corporate) passwords is: {}",
         policies
             .iter()
-            .fold(0, |sum, (policy, pass)| if policy.is_valid_v2(pass) {
-                sum + 1
-            } else {
-                sum
-            })
+            .filter(|(policy, pass)| policy.is_valid_v2(pass))
+            .count()
     )
 }
 
@@ -113,9 +107,7 @@ pub struct PasswordPolicy {
 
 impl PasswordPolicy {
     pub fn is_valid(&self, s: &str) -> bool {
-        let count = s
-            .chars()
-            .fold(0, |sum, c| if c == self.c { sum + 1 } else { sum });
+        let count = s.chars().filter(|c| *c == self.c).count();
         count >= self.min && count <= self.max
     }
 
