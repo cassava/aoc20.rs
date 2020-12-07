@@ -107,12 +107,12 @@ fn main() {
         map.traverse_trees(3, 1)
     );
 
-    let angles = vec![(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
+    let angles: Vec<(usize, usize)> = vec![(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
     println!(
         ":: The product of all angle traversals is: {}",
         angles
             .iter()
-            .map(|x| map.traverse_trees(x.0, x.1))
+            .map(|(cols, rows)| map.traverse_trees(*cols, *rows))
             .fold(1 as usize, |prod, i| prod * i)
     );
 }

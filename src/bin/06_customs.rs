@@ -119,7 +119,7 @@ fn main() {
             continue;
         }
 
-        maps[idx].0 += 1;
+        maps[idx].0 += 1; // update group size
         for c in line.chars() {
             let count = maps[idx].1.entry(c).or_insert(0);
             *count += 1;
@@ -128,16 +128,17 @@ fn main() {
 
     println!(
         ":: Sum of questions answered yes in groups: {}",
-        maps.iter().map(|x| x.1.len()).sum::<usize>()
+        maps.iter()
+            .map(|(_, questions)| questions.len())
+            .sum::<usize>()
     );
 
     println!(
         ":: Sum of questions all answered yes to in groups: {}",
         maps.iter()
-            .map(|x| x
-                .1
+            .map(|(group_size, questions)| questions
                 .iter()
-                .map(|(_, v)| if v == &x.0 { 1 } else { 0 })
+                .map(|(_, v)| if v == group_size { 1 } else { 0 })
                 .sum::<usize>())
             .sum::<usize>()
     );

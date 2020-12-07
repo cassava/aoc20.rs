@@ -123,9 +123,9 @@ impl RuleSet {
         let mut contains = HashMap::new();
         let mut included = HashMap::new();
         for rule in &rules {
-            for bag in &rule.contains {
+            for (_, bag) in &rule.contains {
                 included
-                    .entry(bag.1.clone())
+                    .entry(bag.clone())
                     .or_insert(Vec::new())
                     .push(rule.color.clone());
             }
@@ -171,7 +171,7 @@ impl RuleSet {
         match self.contains.get(c) {
             Some(xs) => xs
                 .iter()
-                .map(|nc| nc.0 * (1 + self.must_contain_len(&nc.1)))
+                .map(|(n, color)| n * (1 + self.must_contain_len(&color)))
                 .sum::<usize>(),
             None => 0,
         }

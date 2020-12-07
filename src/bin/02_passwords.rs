@@ -85,16 +85,22 @@ fn main() {
         ":: Number of valid (sled rental) passwords is: {}",
         policies
             .iter()
-            .fold(0, |sum, x| if x.0.is_valid(&x.1) { sum + 1 } else { sum })
+            .fold(0, |sum, (policy, pass)| if policy.is_valid(pass) {
+                sum + 1
+            } else {
+                sum
+            })
     );
 
     println!(
         ":: Number of valid (Toboggan Corporate) passwords is: {}",
-        policies.iter().fold(0, |sum, x| if x.0.is_valid_v2(&x.1) {
-            sum + 1
-        } else {
-            sum
-        })
+        policies
+            .iter()
+            .fold(0, |sum, (policy, pass)| if policy.is_valid_v2(pass) {
+                sum + 1
+            } else {
+                sum
+            })
     )
 }
 
