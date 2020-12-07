@@ -113,7 +113,7 @@ fn main() {
         angles
             .iter()
             .map(|(cols, rows)| map.traverse_trees(*cols, *rows))
-            .fold(1 as usize, |prod, i| prod * i)
+            .product::<usize>()
     );
 }
 
